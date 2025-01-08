@@ -93,7 +93,7 @@ const CodersCupHistory = () => {
         ref={headingRef}
         className="integral-cf text-center text-5xl md:text-7xl font-bold py-6 px-2 mb-6 bg-gradient-to-b from-gray-400 to-gray-600 text-transparent bg-clip-text"
       >
-        <span className="integral-cf text-[#00A8FF]">OLYMPIAD</span> HISTORY
+        <span className="integral-cf text-[#00A8FF]">Our</span> Vision
       </h1>
 
       {/* Description */}
@@ -101,7 +101,8 @@ const CodersCupHistory = () => {
         ref={descRef}
         className="text-center text-lg md:text-xl mb-10 px-4 md:px-20"
       >
-        Over the years, the event has grown in scale, attracting talented participants. Coder's Cup not only nurtures technical excellence but also encourages collaboration and teamwork, establishing itself as a prestigious platform for budding coders.
+To create a dynamic arena where passion meets excellence, uniting university students, local clubs, and sports enthusiasts. Our event celebrates athleticism, fosters teamwork, and strengthens bonds within and beyond institutions, inspiring the next generation of champions. <br /><br />
+Our mission it to organize an inter-university sports event providing an inclusive platform for everyone to showcase their talent, spirit, and determination. Our mission is to encourage healthy competition, promote sportsmanship, and deliver a memorable experience through a well-executed Olympiad.
       </p>
 
       {/* Image Slider */}

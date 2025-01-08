@@ -16,12 +16,12 @@ const SponsorComp = () => {
       {/* Blockeyfi Logo with Heading */}
       <div className="blockeyfi-logo-container mb-6 mt-8 flex flex-col items-center">
         <h2 className="fira-code text-gray-300 text-3xl mb-2">
-          <span className="uppercase font-bold text-gray-900">Co-Sponsor</span>
+          <span className="uppercase font-bold text-gray-900">Platinum Sponsor</span>
         </h2>
         <img 
-          src="https://res.cloudinary.com/dlriiwcsn/image/upload/v1731348560/Untitled_design_5_uzzrl0.png" 
+          src="https://i.ibb.co/0MYbGtD/rb-55783.png" 
           alt="Blockeyfi" 
-          className="max-w-[150px]" 
+          className="max-w-[250px]" 
         />
       </div>
 
@@ -30,22 +30,22 @@ const SponsorComp = () => {
         {/* Circliphy Logo with Heading */}
         <div className="flex flex-col items-center mb-6 sm:mb-0">
           <h2 className="fira-code text-gray-300 text-3xl mb-4">
-            <span className="uppercase text-gray-900 font-bold">Tech Partner</span>
+            <span className="uppercase text-gray-900 font-bold">Silver Sponsor</span>
           </h2>
           <img 
-            src="https://res.cloudinary.com/dlriiwcsn/image/upload/v1731348643/Circliphy_Tech_partner_qk9s4z.png" 
+            src="https://i.ibb.co/0MYbGtD/rb-55783.png" 
             alt="Circliphy" 
-            className="max-w-[110px] object-contain" 
+            className="max-w-[200px] object-contain" 
           />
         </div>
 
         {/* Datacamp Logo with Heading */}
         <div className="flex flex-col items-center mb-6 sm:mb-0 text-center">
           <h2 className="fira-code text-gray-300 text-3xl mb-4">
-            <span className="uppercase text-gray-900 font-bold">Academic Partner</span>
+            <span className="uppercase text-gray-900 font-bold">Module Sponsor</span>
           </h2>
           <img 
-            src="https://res.cloudinary.com/dlriiwcsn/image/upload/v1731348617/Datacamp_1_rq7xyo.png" 
+            src="https://i.ibb.co/0MYbGtD/rb-55783.png" 
             alt="Datacamp" 
             className="max-w-[200px] object-contain" 
           />
