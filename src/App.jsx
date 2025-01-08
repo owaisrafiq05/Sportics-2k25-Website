@@ -11,6 +11,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import RulesPage from "./pages/RulesPage";
 import TeamPage from "./pages/TeamPage";
 import ContactDetails from "./pages/ContactDetails";
+import SportsPage from "./pages/SportsPage";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -40,6 +41,7 @@ export default function App() {
                 <Route path="/rules" element={<RulesPage />} />
                 <Route path="/team" element={<TeamPage />} />
                 <Route path="/contact" element={<ContactDetails />} />
+                <Route path="/sports" element={<SportsPage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </div>

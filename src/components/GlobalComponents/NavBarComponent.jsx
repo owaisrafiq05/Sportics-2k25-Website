@@ -9,6 +9,7 @@ const Navbar = memo(() => {
   const navItems = [
     { label: 'Home', path: '/', bgColor: 'bg-[#58151E]' },
     { label: 'Team', path: '/team', bgColor: 'bg-[#1E1E1E]' },
+    { label: 'Sports', path: '/sports', bgColor: 'bg-[#1E1E1E]' },
     { label: 'Contact', path: '/contact', bgColor: 'bg-[#1E1E1E]' },
     { label: 'Rules', path: '/rules', bgColor: 'bg-[#987734]' },
     { label: 'Event Flow', path: '/event-flow', bgColor: 'bg-[#1E1E1E]' }
