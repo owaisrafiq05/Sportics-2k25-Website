@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function Header() {
   const navigate = useNavigate();
   const headerRef = useRef(null);
-  const rightImg = "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729965297/header-registration_tb3zk2.png"; // Use the image URL directly
+  const rightImg = "https://i.ibb.co/0MYbGtD/rb-55783.png"; // Use the image URL directly
 
   const handleDragStart = (event) => {
     event.preventDefault();
