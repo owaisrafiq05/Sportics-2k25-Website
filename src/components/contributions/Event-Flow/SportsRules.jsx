@@ -344,6 +344,211 @@ const sports = [
             ]
           }
         ]
+    },
+    {name: "Table Tennis",
+      rules: [
+        {
+          point: "SINGLES LEAGUE RULES",
+          subPoints: [
+            "Players will be divided into groups.",
+            "Best of 3 matches will be played in group stages.",
+            "Each player will play against all players of the group.",
+            "Maximum 2 players will qualify from each group to play knockouts which will be of best of 5."
+          ]
+        },
+        {
+          point: "KNOCKOUT RULES",
+          subPoints: [
+            "Best of 5 matches will be played.",
+            "A player will qualify upon winning only."
+          ]
+        },
+        {
+          point: "DOUBLES AND MIXED DOUBLES RULES",
+          subPoints: [
+            "Mixed Doubles- A team consisting of a boy and a girl.",
+            "Boys Doubles- A team consisting of two boys.",
+            "Girls Doubles- A team consisting of two girls.",
+            "Cross court service.",
+            "Point to the opposite team if a player serves in the wrong court.",
+            "Side and Receiver will be switched in the final set at the 5th point.",
+            "Doubles will follow the league based format.",
+            "Teams will play best of 3 against one another to qualify from the group.",
+            "Maximum 2 teams will be qualified from each group.",
+            "Knockouts onwards best of 5 will be played."
+          ]
+        },
+        {
+          point: "NOTE",
+          subPoints: [
+            "Players are requested to bring their own rackets.",
+            "White coloured T-Shirts and White coloured shorts/trousers are not allowed. Jeans are not allowed.",
+            "Trousers for Girls.",
+            "Trousers/shorts for boys."
+          ]
+        },
+        {
+          point: "Service Rules",
+          subPoints: [
+            "The server for the first game is decided by a toss.",
+            "The service alternates every 2 points until the score reaches 10-all. After that, the service alternates after every point.",
+            "A valid serve must bounce once on the server’s side of the table and once on the receiver’s side.",
+            "The serve must be executed behind the end line, with the ball tossed at least 16 cm upwards and struck behind the table’s end line.",
+            "In the case of a doubles set/game, the serve must be diagonal, from the server's right-hand box to the receiver’s right-hand box.",
+            "If the ball touches the net during service and still lands correctly on the opponent’s side, the service is retaken with no point awarded.",
+            "If, during service, the ball does not touch the racket (i.e., the player misses the ball completely) or falls on the ground before being struck, it is a service fault and results in a point for the opponent."
+          ]
+        },
+        {
+          point: "During play",
+          subPoints: [
+            "A player scores a point when the opponent fails to return the ball, the opponent’s return touches the net and fails to reach the other side of the table, the opponent hits the ball before it bounces on their side, and the opponent's return misses the table or goes out of bounds without touching it.",
+            "Players must switch ends after each game.",
+            "An umpire will be assigned to each match. Their decisions regarding service faults, scoring, and conduct are final.",
+            "Players must maintain proper decorum on the court.",
+            "Verbal or physical abuse, unsporting behavior, or intentional delays in play may result in warnings, point deductions, or disqualification."
+          ]
+        },
+        {
+          point: "Walkover/Forfeit",
+          subPoints: [
+            "A walkover is awarded to the opponent if a player fails to show up or withdraws after a set has begun."
+          ]
+        }
+      ]
+    },
+    {name: "Badminton Singles",
+      rules: [
+        {
+          point: "Match Set",
+          subPoints: [
+            "Each match follows a best-of-3 format both for singles and doubles.",
+            "Singles and Doubles will be a separate category."
+          ]
+        },
+        {
+          point: "Service Rules",
+          subPoints: [
+            "Service should be done below the waist.",
+            "Service must be diagonal.",
+            "Players in doubles cannot pick their serve partners.",
+            "Server feet should be on the ground (floor).",
+            "Server feet should not touch the line.",
+            "While serving the player must hold their hand at least for 1 second before serving."
+          ]
+        },
+        {
+          point: "During Play",
+          subPoints: [
+            "Players are not allowed to touch the net until the shuttle touches the ground.",
+            "Racket should not cross the net.",
+            "Hitting the shuttle twice in one shot will count as a fault, and the opponent will be awarded the point.",
+            "If the shuttle touches the ground (if the shuttle is ‘in’) the rally stops and the opponent's side will get the point.",
+            "The right side is used to serve if server-side points are even and vice versa.",
+            "In the case of a 20-all score, the one who gets a two-point lead first will win the match.",
+            "If the score is 29-all, the team who gets the next point wins the match."
+          ]
+        },
+        {
+          point: "Interval Breaks",
+          subPoints: [
+            "A 60-second interval is allowed when a player or pair reaches 11 points in each game.",
+            "Players are not allowed to leave the court during this interval unless permitted by the umpire.",
+            "Between Sets: A 2-minute interval is allowed between consecutive sets.",
+            "Players may leave the court during this interval but must return on time."
+          ]
+        },
+        {
+          point: "Coaching Time-Out",
+          subPoints: [
+            "Coaches are not allowed on the court at other times."
+          ]
+        },
+        {
+          point: "Single specific rules",
+          subPoints: [
+            "You are allowed to serve till the third court(last line).",
+            "You are allowed to play between the 1st sideline from both ends."
+          ]
+        },
+        {
+          point: "Faults",
+          subPoints: [
+            "A fault occurs if:",
+            "The shuttlecock lands outside the court boundaries.",
+            "It touches the ceiling or sidewalls.",
+            "A player touches the net with their body, racket, or clothing.",
+            "A player strikes the shuttlecock twice in succession."
+          ]
+        }
+      ]
+    },
+    {name: "Badminton Doubles",
+      rules: [
+        {
+          point: "Match Set",
+          subPoints: [
+            "Each match follows a best-of-3 format both for singles and doubles.",
+            "Singles and Doubles will be a separate category."
+          ]
+        },
+        {
+          point: "Service Rules",
+          subPoints: [
+            "Service should be done below the waist.",
+            "Service must be diagonal.",
+            "Players in doubles cannot pick their serve partners.",
+            "Server feet should be on the ground (floor).",
+            "Server feet should not touch the line.",
+            "While serving the player must hold their hand at least for 1 second before serving."
+          ]
+        },
+        {
+          point: "During Play",
+          subPoints: [
+            "Players are not allowed to touch the net until the shuttle touches the ground.",
+            "Racket should not cross the net.",
+            "Hitting the shuttle twice in one shot will count as a fault, and the opponent will be awarded the point.",
+            "If the shuttle touches the ground (if the shuttle is ‘in’) the rally stops and the opponent's side will get the point.",
+            "The right side is used to serve if server-side points are even and vice versa.",
+            "In the case of a 20-all score, the one who gets a two-point lead first will win the match.",
+            "If the score is 29-all, the team who gets the next point wins the match."
+          ]
+        },
+        {
+          point: "Interval Breaks",
+          subPoints: [
+            "A 60-second interval is allowed when a player or pair reaches 11 points in each game.",
+            "Players are not allowed to leave the court during this interval unless permitted by the umpire.",
+            "Between Sets: A 2-minute interval is allowed between consecutive sets.",
+            "Players may leave the court during this interval but must return on time."
+          ]
+        },
+        {
+          point: "Coaching Time-Out",
+          subPoints: [
+            "Coaching is permitted only during the 60-second interval or the 2-minute break between games.",
+            "Coaches are not allowed on the court at other times."
+          ]
+        },
+        {
+          point: "Doubles rules",
+          subPoints: [
+            "Shuttles should not cross the 2nd line from the backcourt while serving.",
+            "Other than serving you can play in the whole court."
+          ]
+        },
+        {
+          point: "Faults",
+          subPoints: [
+            "A fault occurs if:",
+            "The shuttlecock lands outside the court boundaries.",
+            "It touches the ceiling or sidewalls.",
+            "A player touches the net with their body, racket, or clothing.",
+            "A player strikes the shuttlecock twice in succession."
+          ]
+        }
+      ]
     }
 ]
   

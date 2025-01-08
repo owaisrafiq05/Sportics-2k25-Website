@@ -17,7 +17,7 @@ const TeamPage = () => {
           </div>
           <div className="flex gap-8 lg:gap-16 md:gap-8 justify-center md:flex flex-wrap">
             <PersonCard image="" name="Ghulam Mohiuddin" position="Vice President" />
-            <PersonCard image="" name="Anush Almas" position="Marketig Vice President" />
+            <PersonCard image="" name="Anush Hussain" position="Vice President" />
           </div>
           <div className='flex gap-8 lg:gap-16 md:gap-8 flex-wrap justify-center'>
             <PersonCard image="" name="Wisha Zahid" position="General Secretary" />
