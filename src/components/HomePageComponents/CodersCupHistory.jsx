@@ -101,8 +101,7 @@ const CodersCupHistory = () => {
         ref={descRef}
         className="text-center text-lg md:text-xl mb-10 px-4 md:px-20"
       >
-To create a dynamic arena where passion meets excellence, uniting university students, local clubs, and sports enthusiasts. Our event celebrates athleticism, fosters teamwork, and strengthens bonds within and beyond institutions, inspiring the next generation of champions. <br /><br />
-Our mission it to organize an inter-university sports event providing an inclusive platform for everyone to showcase their talent, spirit, and determination. Our mission is to encourage healthy competition, promote sportsmanship, and deliver a memorable experience through a well-executed Olympiad.
+To create a dynamic arena where passion meets excellence, uniting university students, local clubs, and sports enthusiasts. Our event celebrates athleticism, fosters teamwork, and strengthens bonds within and beyond institutions, inspiring the next generation of champions.
       </p>
 
       {/* Image Slider */}
