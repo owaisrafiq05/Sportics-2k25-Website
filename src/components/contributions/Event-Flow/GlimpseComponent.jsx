@@ -6,18 +6,22 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 const images = [
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964487/acm-coders-cup-23-1_cr0ue1.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964486/acm-coders-cup-23-2_lk2c0f.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964487/acm-coders-cup-23-3_tc2q0x.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964488/acm-coders-cup-23-4_cwpsjk.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964490/acm-coders-cup-23-5_vfqigw.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964492/acm-coders-cup-23-7_ylz6jy.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964495/acm-coders-cup-23-10_ti87wp.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964494/acm-coders-cup-23-8_dhdsiq.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964496/acm-coders-cup-23-9_ahrr3y.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964496/acm-coders-cup-23-6_zrceac.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964496/acm-coders-cup-23-11_pdmfuo.jpg",
-]
+  "https://i.ibb.co/jJt9Qk3/12.png",
+  "https://i.ibb.co/BNG3gPb/13.png",
+  "https://i.ibb.co/3fYQtc2/14.png",
+  "https://i.ibb.co/WB4V49W/2.png",
+  "https://i.ibb.co/6FRBBKs/1.png",
+  "https://i.ibb.co/Bftmqk2/3.png",
+  "https://i.ibb.co/j4363S6/4.png",
+  "https://i.ibb.co/94h431K/5.png",
+  "https://i.ibb.co/SRdyLym/6.png",
+  "https://i.ibb.co/FY3NC4C/7.png", 
+  "https://i.ibb.co/FskVQFY/8.png",
+  "https://i.ibb.co/8NmZfH0/9.png",
+  "https://i.ibb.co/QrG5yPT/10.png",
+  "https://i.ibb.co/YPp1nzS/11.png"
+];
+
 
 export default function GlimpseComponentlow() {
   const componentRef = useRef(null)

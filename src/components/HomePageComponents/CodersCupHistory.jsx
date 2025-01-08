@@ -10,20 +10,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Store images in an array
 const eventImages = [
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964503/event1_ajb9dz.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964504/event2_exeisd.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964505/event3_ncetf6.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964508/event4_sq8ywt.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964512/event7_ueqdta.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964514/event8_g7cewl.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964515/event9_vvsjiy.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964516/event10_lvjqtq.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964522/event14_tp1vth.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964523/event15_fssddm.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964519/event12_d9nxg9.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964518/event11_p2j8ws.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964511/event5_brgezt.jpg",
-  "https://res.cloudinary.com/dm1xi8zff/image/upload/v1729964533/event23_fa8ety.jpg"
+  "https://i.ibb.co/jJt9Qk3/12.png",
+  "https://i.ibb.co/BNG3gPb/13.png",
+  "https://i.ibb.co/3fYQtc2/14.png",
+  "https://i.ibb.co/WB4V49W/2.png",
+  "https://i.ibb.co/6FRBBKs/1.png",
+  "https://i.ibb.co/Bftmqk2/3.png",
+  "https://i.ibb.co/j4363S6/4.png",
+  "https://i.ibb.co/94h431K/5.png",
+  "https://i.ibb.co/SRdyLym/6.png",
+  "https://i.ibb.co/FY3NC4C/7.png", 
+  "https://i.ibb.co/FskVQFY/8.png",
+  "https://i.ibb.co/8NmZfH0/9.png",
+  "https://i.ibb.co/QrG5yPT/10.png",
+  "https://i.ibb.co/YPp1nzS/11.png"
 ];
 
 const CodersCupHistory = () => {
