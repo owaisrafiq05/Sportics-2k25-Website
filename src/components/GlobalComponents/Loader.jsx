@@ -4,7 +4,7 @@ const Loader = () => {
   return (
     <div className="h-screen w-screen bg-black flex flex-col items-center justify-center gap-8">
       <img
-        src="https://i.ibb.co/521ck5W/LOGO-OLYMPIAD-TRANS.png"
+        src="https://i.ibb.co/MnMLqN1/Olympiad-LOGO-v2.png"
         alt="Olympiad Logo"
         className="h-80 md:h-120 w-auto"
       />
