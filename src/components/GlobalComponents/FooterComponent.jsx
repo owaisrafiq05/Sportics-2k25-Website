@@ -4,6 +4,7 @@ import { faPhone, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const developers = [
+  {name: "Hunain Imran", linkedIn: "https://www.linkedin.com/in/hunain-imran-0516642ab/"},
   { name: "Ahad Aziz", linkedIn: "https://www.linkedin.com/in/ahadaziz/"},
   { name: "Owais Rafiq", linkedIn: "https://www.linkedin.com/in/owais-rafiq-639494253/"},
   { name: "Sameer Ahmed", linkedIn: "https://www.linkedin.com/in/sameer-vers3/"},

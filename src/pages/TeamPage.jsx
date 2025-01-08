@@ -22,11 +22,13 @@ const TeamPage = () => {
           <div className='flex gap-8 lg:gap-16 md:gap-8 flex-wrap justify-center'>
             <PersonCard image="https://i.ibb.co/pf1JGGS/Untitled.jpg" name="Wisha Zahid" position="General Secretary" />
             <PersonCard image="https://i.ibb.co/Xp0kRHJ/treasurer.jpg" name="Shahzaib Mirza" position="Treasurer" />
-            <PersonCard image="https://i.ibb.co/MPZ6f7d/Esports-Head-zohaib.jpg" name="Zohaib Siddiqui" position="E-Sports Director" />
+            <PersonCard image="https://i.ibb.co/Jvp9x7h/saim.jpg" name="Muhammad Saim" position="Branding Director" />
           </div>
           <div className="flex gap-8 lg:gap-16 md:gap-8 flex-wrap justify-center">
             <PersonCard image="https://i.ibb.co/41b4HHN/Event-Manager-Moeed.jpg" name="Moeed Uddin" position="Event Manager" />
             <PersonCard image="https://i.ibb.co/h1MrPCb/event-manager-ausaja.jpg" name="Ausaja Hussain" position="Event Manager" />
+            <PersonCard image="https://i.ibb.co/MPZ6f7d/Esports-Head-zohaib.jpg" name="Zohaib Siddiqui" position="E-Sports Director" />
+
           </div>
           <div className="flex gap-8 lg:gap-16 md:gap-8 flex-wrap justify-center">
             <PersonCard image="https://i.ibb.co/Zx23dw5/DC-Head-Ansar.jpg" name="Anser Tayyab" position="Director Discipline Affairs" />
