@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Use the Cloudinary URL for the logo
-const logo = "https://i.ibb.co/8K4rZw5/olympiad-logo.png"
+const logo = "https://i.ibb.co/MnMLqN1/Olympiad-LOGO-v2.png"
 
 gsap.registerPlugin(ScrollTrigger); // Register ScrollTrigger plugin
 

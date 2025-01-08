@@ -118,7 +118,7 @@ const FooterComponent = () => {
 
         <div className="py-2 border-t border-black mt-auto w-full">
           <p className="text-center text-[15px] sm:text-[14px] md:text-[15px] lg:text-[16px] xl:text-[16px] 2xl:text-[16px] font-normal">
-            &copy; 2024 ACM | All rights reserved
+            &copy; {new Date().getFullYear()} Sportics | All rights reserved
           </p>
         </div>
       </footer>

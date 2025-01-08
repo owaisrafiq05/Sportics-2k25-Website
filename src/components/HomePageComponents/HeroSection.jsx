@@ -195,7 +195,7 @@ export default function HeroSection() {
         <img
           className="w-[300px] sm:w-[400px] md:w-[400px] lg:w-[400px] h-auto mb-6"
           // src="https://res.cloudinary.com/dlriiwcsn/image/upload/v1731254698/Coder_s_Cup_24_Logo_With_Sponsors_qyhl7g.png"
-          src="https://i.ibb.co/8K4rZw5/olympiad-logo.png"
+          src="https://i.ibb.co/MnMLqN1/Olympiad-LOGO-v2.png"
           // src="sportics2.png"
           alt="Olympiad Logo"
           ref={logoRef} // Logo animation ref
