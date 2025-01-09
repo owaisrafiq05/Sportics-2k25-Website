@@ -13,29 +13,31 @@ const debounce = (func, wait) => {
 };
 
 const EnhancedMultiStepForm = () => {
-  const steps = ["Leader Info", "Player Info", "Review", "Submit"];
+  const steps = ["Contact Info", "Player Info", "Review", "Submit"];
   const [currentStep, setCurrentStep] = useState(1);
   const [complete, setComplete] = useState(false);
   const sportsConfig = {
-    "Volleyball (6-10 players)": { min: 6, max: 10, fee: 2000 },
-    "Throwball (7-11 players)": { min: 7, max: 11, fee: 2000 },
-    "Futsal Boys (8-10 players)": { min: 8, max: 10, fee: 2500 },
-    "Futsal Girls (8-10 players)": { min: 8, max: 10, fee: 2500 },
-    "Table Tennis Singles (1 player)": { min: 1, max: 1, fee: 500 },
-    "Table Tennis Doubles (2 players)": { min: 2, max: 2, fee: 1000 },
-    "Table Tennis Mixed (2 players)": { min: 2, max: 2, fee: 1000 },
-    "Badminton Singles (1 player)": { min: 1, max: 1, fee: 500 },
-    "Badminton Doubles (2 players)": { min: 2, max: 2, fee: 1000 },
-    "Indoor Cricket (7-9 players)": { min: 7, max: 9, fee: 2500 },
-    "Basketball (8-12 players)": { min: 8, max: 12, fee: 2500 },
-    "CS2 (5-6 players)": { min: 5, max: 6, fee: 1500 },
-    "Valorant (5-6 players)": { min: 5, max: 6, fee: 1500 },
-    "FIFA (1 player)": { min: 1, max: 1, fee: 500 },
-    "Tekken (1 player)": { min: 1, max: 1, fee: 500 },
-    "PUBG/Freefire (4 players)": { min: 4, max: 4, fee: 1500 },
-    "Scrabble (1 player)": { min: 1, max: 1, fee: 500 },
-    "Chess (1 player)": { min: 1, max: 1, fee: 500 },
-    "Sequence (2 players)": { min: 2, max: 2, fee: 1000 },
+    "Volleyball (6-10 players)": { min: 6, max: 10, fee: 6000 },
+    "Throwball (7-11 players)": { min: 7, max: 11, fee: 5000 },
+    "Futsal Boys (8-10 players)": { min: 8, max: 10, fee: 6000 },
+    "Futsal Girls (8-10 players)": { min: 8, max: 10, fee: 6000 },
+    "Table Tennis Singles (1 player)": { min: 1, max: 1, fee: 1200 },
+    "Table Tennis Doubles (2 players)": { min: 2, max: 2, fee: 1500 },
+    "Table Tennis Mixed (2 players)": { min: 2, max: 2, fee: 2500 },
+    "Badminton Singles (1 player)": { min: 1, max: 1, fee: 1500 },
+    "Badminton Doubles (2 players)": { min: 2, max: 2, fee: 2500 },
+    "Indoor Cricket (7-9 players)": { min: 7, max: 9, fee: 4000 },
+    "Basketball Boys (8-12 players)": { min: 8, max: 12, fee: 7000 },
+    "Basketball Girls (8-12 players)": { min: 8, max: 12, fee: 6000 },
+    "CS2 (5-6 players)": { min: 5, max: 6, fee: 2000 },
+    "Valorant (5-6 players)": { min: 5, max: 6, fee: 2000 },
+    "FIFA (1 player)": { min: 1, max: 1, fee: 800 },
+    "Tekken (1 player)": { min: 1, max: 1, fee: 800 },
+    "PUBG (4 players)": { min: 4, max: 4, fee: 1000 },
+    "Scrabble (1 player)": { min: 1, max: 1, fee: 700 },
+    "Chess (1 player)": { min: 1, max: 1, fee: 700 },
+    "Sequence (2 players)": { min: 2, max: 2, fee: 1200 },
+    "Padel (2 players)": { min: 2, max: 2, fee: 2500 },
   };
   const [formData, setFormData] = useState({
     leader: {
@@ -228,7 +230,7 @@ const EnhancedMultiStepForm = () => {
 
   const validateStep = (step) => {
     if (step === 1) {
-      const leaderFields = ["name", "email", "cnic", "phone", "teamName", "sports"];
+      const leaderFields = ["name", "email", "cnic", "phone", "teamName", "sports", "paymentScreenshot"];
       const hasErrors = Object.values(errors.leader).some(error => error !== "");
       const hasEmptyFields = leaderFields.some(field => !formData.leader[field]);
       return !hasErrors && !hasEmptyFields;
@@ -320,11 +322,10 @@ const EnhancedMultiStepForm = () => {
 
   // Add payment details constant
   const PAYMENT_DETAILS = {
-    accountTitle: "John Doe",
-    accountNumber: "1234-5678-9012-3456",
-    bankName: "HBL",
-    easyPaisa: "0300-1234567",
-    jazzCash: "0300-1234567"
+    accountTitle: "Shahzaib Mirza",
+    accountNumber: "11710981004334010",
+    bankName: "Bank Al Habib",
+    IBAN: "PK92BAHL1171098100433401",
   };
 
   return (
@@ -360,7 +361,7 @@ const EnhancedMultiStepForm = () => {
                     className="w-full px-4 sm:px-6"
                   >
                     <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">
-                      Leader Information
+                      Contact Person Information
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                       <TextField
@@ -460,23 +461,21 @@ const EnhancedMultiStepForm = () => {
                               <p><span className="font-semibold">Bank Transfer:</span></p>
                               <p>Account Title: {PAYMENT_DETAILS.accountTitle}</p>
                               <p>Account Number: {PAYMENT_DETAILS.accountNumber}</p>
+                              <p>IBAN: {PAYMENT_DETAILS.IBAN}</p>
                               <p>Bank: {PAYMENT_DETAILS.bankName}</p>
-                              <div className="mt-2">
-                                <p><span className="font-semibold">Mobile Payment Options:</span></p>
-                                <p>EasyPaisa: {PAYMENT_DETAILS.easyPaisa}</p>
-                                <p>JazzCash: {PAYMENT_DETAILS.jazzCash}</p>
-                              </div>
                             </div>
                           </div>
                         )}
                         
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Payment Screenshot
+                          Payment Screenshot <span className="text-red-500">*</span>
                         </label>
                         <div className="max-w-md rounded-lg overflow-hidden">
                           <div className="w-full">
                             <div
-                              className="relative h-48 rounded-lg border-2 border-blue-500 bg-gray-50 flex justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
+                              className={`relative h-48 rounded-lg border-2 ${
+                                errors.leader.paymentScreenshot ? 'border-red-500' : 'border-blue-500'
+                              } bg-gray-50 flex justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out`}
                             >
                               <div className="absolute flex flex-col items-center">
                                 <img
@@ -505,6 +504,9 @@ const EnhancedMultiStepForm = () => {
                             </div>
                           </div>
                         </div>
+                        {errors.leader.paymentScreenshot && (
+                          <p className="mt-1 text-sm text-red-500">{errors.leader.paymentScreenshot}</p>
+                        )}
                       </div>
                     </div>
                   </motion.div>
@@ -533,7 +535,7 @@ const EnhancedMultiStepForm = () => {
                         >
                           <div className="flex justify-between items-center mb-4">
                             <h3 className="text-lg sm:text-xl font-semibold text-gray-700">
-                              Player {index + 1}
+                              {index === 0 ? "Player 1 (Leader)" : `Player ${index + 1}`}
                             </h3>
                             {formData.players.length > sportsConfig[formData.leader.sports]?.min && (
                               <button
