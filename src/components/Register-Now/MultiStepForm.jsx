@@ -1,13 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TiTick } from "react-icons/ti";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, MenuItem } from "@mui/material";
 import { Toaster, toast } from 'sonner';
+
+const debounce = (func, wait) => {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), wait);
+  };
+};
 
 const EnhancedMultiStepForm = () => {
   const steps = ["Leader Info", "Player Info", "Review", "Submit"];
   const [currentStep, setCurrentStep] = useState(1);
   const [complete, setComplete] = useState(false);
+  const sportsConfig = {
+    "Volleyball (6-10 players)": { min: 6, max: 10, fee: 2000 },
+    "Throwball (7-11 players)": { min: 7, max: 11, fee: 2000 },
+    "Futsal Boys (8-10 players)": { min: 8, max: 10, fee: 2500 },
+    "Futsal Girls (8-10 players)": { min: 8, max: 10, fee: 2500 },
+    "Table Tennis Singles (1 player)": { min: 1, max: 1, fee: 500 },
+    "Table Tennis Doubles (2 players)": { min: 2, max: 2, fee: 1000 },
+    "Table Tennis Mixed (2 players)": { min: 2, max: 2, fee: 1000 },
+    "Badminton Singles (1 player)": { min: 1, max: 1, fee: 500 },
+    "Badminton Doubles (2 players)": { min: 2, max: 2, fee: 1000 },
+    "Indoor Cricket (7-9 players)": { min: 7, max: 9, fee: 2500 },
+    "Basketball (8-12 players)": { min: 8, max: 12, fee: 2500 },
+    "CS2 (5-6 players)": { min: 5, max: 6, fee: 1500 },
+    "Valorant (5-6 players)": { min: 5, max: 6, fee: 1500 },
+    "FIFA (1 player)": { min: 1, max: 1, fee: 500 },
+    "Tekken (1 player)": { min: 1, max: 1, fee: 500 },
+    "PUBG/Freefire (4 players)": { min: 4, max: 4, fee: 1500 },
+    "Scrabble (1 player)": { min: 1, max: 1, fee: 500 },
+    "Chess (1 player)": { min: 1, max: 1, fee: 500 },
+    "Sequence (2 players)": { min: 2, max: 2, fee: 1000 },
+  };
   const [formData, setFormData] = useState({
     leader: {
       name: "",
@@ -68,61 +97,15 @@ const EnhancedMultiStepForm = () => {
     return true;
   };
 
-  const handleInputChange = (section, field, value, index) => {
-    let error = "";
-    
+  const handleInputChange = useCallback((section, field, value, index) => {
     if (["cnic", "phone", "age"].includes(field)) {
       if (!handleNumberOnlyInput({ target: { value } }, field === "cnic" ? 13 : field === "phone" ? 11 : 2)) {
         return;
       }
     }
 
-    if (field === "email" && value) {
-      if (!validateEmail(value)) {
-        toast.error("Please enter a valid email address");
-        error = "Invalid email format";
-      }
-    } else if (field === "cnic" && value) {
-      if (!validateCNIC(value)) {
-        toast.error("CNIC must be exactly 13 digits");
-        error = "CNIC must be 13 digits";
-      }
-    } else if (field === "phone" && value) {
-      if (!validatePhone(value)) {
-        toast.error("Phone number must start with 03 and be 11 digits");
-        error = "Invalid phone format";
-      }
-    } else if (field === "age" && value) {
-      if (!validateAge(value)) {
-        toast.error("Age must be between 15 and 60");
-        error = "Invalid age";
-      }
-    }
-
     if (section === "leader") {
-      setErrors(prev => ({
-        ...prev,
-        leader: {
-          ...prev.leader,
-          [field]: error
-        }
-      }));
-    } else if (section === "players") {
-      setErrors(prev => {
-        const newPlayerErrors = [...prev.players];
-        newPlayerErrors[index] = {
-          ...newPlayerErrors[index],
-          [field]: error
-        };
-        return {
-          ...prev,
-          players: newPlayerErrors
-        };
-      });
-    }
-
-    if (section === "leader") {
-      setFormData((prevState) => ({
+      setFormData(prevState => ({
         ...prevState,
         leader: {
           ...prevState.leader,
@@ -130,7 +113,7 @@ const EnhancedMultiStepForm = () => {
         },
       }));
     } else if (section === "players") {
-      setFormData((prevState) => {
+      setFormData(prevState => {
         const newPlayers = [...prevState.players];
         newPlayers[index] = {
           ...newPlayers[index],
@@ -143,16 +126,94 @@ const EnhancedMultiStepForm = () => {
       });
     }
 
-    if (error) {
-      toast.error(error);
+    if (window.validateTimeout) {
+      clearTimeout(window.validateTimeout);
+    }
+
+    window.validateTimeout = setTimeout(() => {
+      let error = "";
+
+      if (!value) return;
+
+      switch (field) {
+        case "email":
+          if (!validateEmail(value)) {
+            error = "Invalid email format";
+            toast.error("Please enter a valid email address");
+          }
+          break;
+        case "cnic":
+          if (!validateCNIC(value)) {
+            error = "CNIC must be 13 digits";
+            toast.error("CNIC must be exactly 13 digits");
+          }
+          break;
+        case "phone":
+          if (!validatePhone(value)) {
+            error = "Invalid phone format";
+            toast.error("Phone number must start with 03 and be 11 digits");
+          }
+          break;
+        case "age":
+          if (!validateAge(value)) {
+            error = "Invalid age";
+            toast.error("Age must be between 15 and 60");
+          }
+          break;
+        default:
+          break;
+      }
+
+      if (section === "leader") {
+        setErrors(prev => ({
+          ...prev,
+          leader: {
+            ...prev.leader,
+            [field]: error
+          }
+        }));
+      } else if (section === "players") {
+        setErrors(prev => {
+          const newPlayerErrors = [...prev.players];
+          newPlayerErrors[index] = {
+            ...newPlayerErrors[index],
+            [field]: error
+          };
+          return {
+            ...prev,
+            players: newPlayerErrors
+          };
+        });
+      }
+    }, 2000);
+  }, []);
+
+  const addPlayer = () => {
+    const selectedSport = formData.leader.sports;
+    const maxPlayers = selectedSport ? sportsConfig[selectedSport].max : Infinity;
+    
+    if (formData.players.length < maxPlayers) {
+      setFormData((prev) => ({
+        ...prev,
+        players: [...prev.players, { name: "", cnic: "", phone: "", age: "" }],
+      }));
+    } else {
+      toast.error(`Maximum ${maxPlayers} players allowed for ${selectedSport}`);
     }
   };
 
-  const addPlayer = () => {
-    setFormData((prev) => ({
-      ...prev,
-      players: [...prev.players, { name: "", cnic: "", phone: "", age: "" }],
-    }));
+  const removePlayer = (index) => {
+    const selectedSport = formData.leader.sports;
+    const minPlayers = selectedSport ? sportsConfig[selectedSport].min : 1;
+    
+    if (formData.players.length > minPlayers) {
+      setFormData(prev => ({
+        ...prev,
+        players: prev.players.filter((_, i) => i !== index)
+      }));
+    } else {
+      toast.error(`Minimum ${minPlayers} players required for ${selectedSport}`);
+    }
   };
 
   const handleSubmit = () => {
@@ -258,6 +319,15 @@ const EnhancedMultiStepForm = () => {
     );
   };
 
+  // Add payment details constant
+  const PAYMENT_DETAILS = {
+    accountTitle: "John Doe",
+    accountNumber: "1234-5678-9012-3456",
+    bankName: "HBL",
+    easyPaisa: "0300-1234567",
+    jazzCash: "0300-1234567"
+  };
+
   return (
     <>
       <Toaster 
@@ -299,6 +369,8 @@ const EnhancedMultiStepForm = () => {
                         variant="outlined"
                         value={formData.leader.name}
                         onChange={(e) => handleInputChange("leader", "name", e.target.value)}
+                        error={Boolean(errors.leader.name)}
+                        helperText={errors.leader.name}
                         fullWidth
                         size="small"
                         className="!text-sm sm:!text-base"
@@ -309,24 +381,38 @@ const EnhancedMultiStepForm = () => {
                         type="email"
                         value={formData.leader.email}
                         onChange={(e) => handleInputChange("leader", "email", e.target.value)}
+                        error={Boolean(errors.leader.email)}
+                        helperText={errors.leader.email}
                         fullWidth
                         size="small"
                       />
                       <TextField
-                        label="Leader CNIC"
+                        label="CNIC"
                         variant="outlined"
                         value={formData.leader.cnic}
                         onChange={(e) => handleInputChange("leader", "cnic", e.target.value)}
+                        error={Boolean(errors.leader.cnic)}
+                        helperText={errors.leader.cnic || "13 digits required"}
                         fullWidth
                         size="small"
+                        inputProps={{
+                          maxLength: 13,
+                          pattern: "\\d*"
+                        }}
                       />
                       <TextField
-                        label="Leader Phone Number"
+                        label="Phone Number"
                         variant="outlined"
                         value={formData.leader.phone}
                         onChange={(e) => handleInputChange("leader", "phone", e.target.value)}
+                        error={Boolean(errors.leader.phone)}
+                        helperText={errors.leader.phone || "Format: 03XXXXXXXXX"}
                         fullWidth
                         size="small"
+                        inputProps={{
+                          maxLength: 11,
+                          pattern: "\\d*"
+                        }}
                       />
                       <TextField
                         label="Team Name"
@@ -337,24 +423,89 @@ const EnhancedMultiStepForm = () => {
                         size="small"
                       />
                       <TextField
+                        select
                         label="Sports"
                         variant="outlined"
                         value={formData.leader.sports}
-                        onChange={(e) => handleInputChange("leader", "sports", e.target.value)}
+                        onChange={(e) => {
+                          const newSport = e.target.value;
+                          const minPlayers = sportsConfig[newSport].min;
+                          
+                          handleInputChange("leader", "sports", newSport);
+                          
+                          // Adjust players array to match minimum required players
+                          setFormData(prev => ({
+                            ...prev,
+                            players: Array(minPlayers).fill().map((_, i) => 
+                              prev.players[i] || { name: "", cnic: "", phone: "", age: "" }
+                            )
+                          }));
+                        }}
                         fullWidth
                         size="small"
-                      />
+                      >
+                        {Object.keys(sportsConfig).map((sport) => (
+                          <MenuItem key={sport} value={sport}>
+                            {sport}
+                          </MenuItem>
+                        ))}
+                      </TextField>
                       <div className="col-span-1 sm:col-span-2">
+                        {formData.leader.sports && (
+                          <div className="mb-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                            <h3 className="text-lg font-semibold text-blue-900 mb-2">Registration Fee Details</h3>
+                            <p className="text-blue-800 font-medium mb-1">
+                              Registration Fee: PKR {sportsConfig[formData.leader.sports].fee}
+                            </p>
+                            <div className="mt-3 space-y-1 text-sm text-blue-700">
+                              <p><span className="font-semibold">Bank Transfer:</span></p>
+                              <p>Account Title: {PAYMENT_DETAILS.accountTitle}</p>
+                              <p>Account Number: {PAYMENT_DETAILS.accountNumber}</p>
+                              <p>Bank: {PAYMENT_DETAILS.bankName}</p>
+                              <div className="mt-2">
+                                <p><span className="font-semibold">Mobile Payment Options:</span></p>
+                                <p>EasyPaisa: {PAYMENT_DETAILS.easyPaisa}</p>
+                                <p>JazzCash: {PAYMENT_DETAILS.jazzCash}</p>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        
                         <label className="block text-sm font-medium text-gray-700 mb-1">
                           Payment Screenshot
                         </label>
-                        <input
-                          type="file"
-                          className="w-full text-sm border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          onChange={(e) =>
-                            handleInputChange("leader", "paymentScreenshot", e.target.files[0])
-                          }
-                        />
+                        <div className="max-w-md rounded-lg overflow-hidden">
+                          <div className="w-full">
+                            <div
+                              className="relative h-48 rounded-lg border-2 border-blue-500 bg-gray-50 flex justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
+                            >
+                              <div className="absolute flex flex-col items-center">
+                                <img
+                                  alt="File Icon"
+                                  className="mb-3"
+                                  src="https://img.icons8.com/dusk/64/000000/file.png"
+                                />
+                                <span className="block text-gray-500 font-semibold">
+                                  {formData.leader.paymentScreenshot 
+                                    ? formData.leader.paymentScreenshot.name 
+                                    : "Drag & drop your files here"}
+                                </span>
+                                <span className="block text-gray-400 font-normal mt-1">
+                                  {!formData.leader.paymentScreenshot && "or click to upload"}
+                                </span>
+                              </div>
+
+                              <input
+                                type="file"
+                                accept="image/*"
+                                className="h-full w-full opacity-0 cursor-pointer"
+                                onChange={(e) =>
+                                  handleInputChange("leader", "paymentScreenshot", e.target.files[0])
+                                }
+                              />
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -381,17 +532,27 @@ const EnhancedMultiStepForm = () => {
                           transition={{ duration: 0.5 }}
                           className="mb-6 p-4 sm:p-6 bg-gray-50 rounded-lg shadow-md"
                         >
-                          <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-700">
-                            Player {index + 1}
-                          </h3>
+                          <div className="flex justify-between items-center mb-4">
+                            <h3 className="text-lg sm:text-xl font-semibold text-gray-700">
+                              Player {index + 1}
+                            </h3>
+                            {formData.players.length > sportsConfig[formData.leader.sports]?.min && (
+                              <button
+                                onClick={() => removePlayer(index)}
+                                className="text-red-500 hover:text-red-700"
+                              >
+                                Remove Player
+                              </button>
+                            )}
+                          </div>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                             <TextField
                               label="Player Name"
                               variant="outlined"
                               value={player.name}
-                              onChange={(e) =>
-                                handleInputChange("players", "name", e.target.value, index)
-                              }
+                              onChange={(e) => handleInputChange("players", "name", e.target.value, index)}
+                              error={Boolean(errors.players[index]?.name)}
+                              helperText={errors.players[index]?.name}
                               fullWidth
                               size="small"
                             />
@@ -399,9 +560,9 @@ const EnhancedMultiStepForm = () => {
                               label="Player CNIC"
                               variant="outlined"
                               value={player.cnic}
-                              onChange={(e) =>
-                                handleInputChange("players", "cnic", e.target.value, index)
-                              }
+                              onChange={(e) => handleInputChange("players", "cnic", e.target.value, index)}
+                              error={Boolean(errors.players[index]?.cnic)}
+                              helperText={errors.players[index]?.cnic}
                               fullWidth
                               size="small"
                             />
@@ -409,21 +570,27 @@ const EnhancedMultiStepForm = () => {
                               label="Player Phone Number"
                               variant="outlined"
                               value={player.phone}
-                              onChange={(e) =>
-                                handleInputChange("players", "phone", e.target.value, index)
-                              }
+                              onChange={(e) => handleInputChange("players", "phone", e.target.value, index)}
+                              error={Boolean(errors.players[index]?.phone)}
+                              helperText={errors.players[index]?.phone}
                               fullWidth
                               size="small"
                             />
                             <TextField
-                              label="Player Age"
+                              label="Age"
                               variant="outlined"
                               value={player.age}
-                              onChange={(e) =>
-                                handleInputChange("players", "age", e.target.value, index)
-                              }
+                              onChange={(e) => handleInputChange("players", "age", e.target.value, index)}
+                              error={Boolean(errors.players[index]?.age)}
+                              helperText={errors.players[index]?.age || "Age between 15-60"}
                               fullWidth
                               size="small"
+                              inputProps={{
+                                maxLength: 2,
+                                pattern: "\\d*",
+                                min: 15,
+                                max: 60
+                              }}
                             />
                           </div>
                         </motion.div>
