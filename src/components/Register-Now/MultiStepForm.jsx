@@ -51,7 +51,6 @@ const EnhancedMultiStepForm = () => {
       {
         name: "",
         cnic: "",
-        phone: "",
         age: "",
       },
     ],
@@ -195,7 +194,7 @@ const EnhancedMultiStepForm = () => {
     if (formData.players.length < maxPlayers) {
       setFormData((prev) => ({
         ...prev,
-        players: [...prev.players, { name: "", cnic: "", phone: "", age: "" }],
+        players: [...prev.players, { name: "", cnic: "", age: "" }],
       }));
     } else {
       toast.error(`Maximum ${maxPlayers} players allowed for ${selectedSport}`);
@@ -236,7 +235,7 @@ const EnhancedMultiStepForm = () => {
     } else if (step === 2) {
       return formData.players.every((player, index) => {
         const hasErrors = Object.values(errors.players[index] || {}).some(error => error !== "");
-        return !hasErrors && player.name && player.cnic && player.phone && player.age;
+        return !hasErrors && player.name && player.cnic && player.age;
       });
     }
     return true;
@@ -437,7 +436,7 @@ const EnhancedMultiStepForm = () => {
                           setFormData(prev => ({
                             ...prev,
                             players: Array(minPlayers).fill().map((_, i) => 
-                              prev.players[i] || { name: "", cnic: "", phone: "", age: "" }
+                              prev.players[i] || { name: "", cnic: "", age: "" }
                             )
                           }));
                         }}
@@ -563,16 +562,6 @@ const EnhancedMultiStepForm = () => {
                               onChange={(e) => handleInputChange("players", "cnic", e.target.value, index)}
                               error={Boolean(errors.players[index]?.cnic)}
                               helperText={errors.players[index]?.cnic}
-                              fullWidth
-                              size="small"
-                            />
-                            <TextField
-                              label="Player Phone Number"
-                              variant="outlined"
-                              value={player.phone}
-                              onChange={(e) => handleInputChange("players", "phone", e.target.value, index)}
-                              error={Boolean(errors.players[index]?.phone)}
-                              helperText={errors.players[index]?.phone}
                               fullWidth
                               size="small"
                             />
