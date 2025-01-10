@@ -13,26 +13,26 @@ const TeamPage = () => {
 
         <div className="flex flex-col lg:gap-16 md:gap-8 gap-8 flex-wrap">
           <div className='flex justify-center'>
-            <PersonCard image="https://i.ibb.co/x2wd129/president.jpg" name="Taha Abbas" position="President" />
+            <PersonCard image="https://i.ibb.co/44bLHW7/president.jpg" name="Taha Abbas" position="President" />
           </div>
           <div className="flex gap-8 lg:gap-16 md:gap-8 justify-center md:flex flex-wrap">
-            <PersonCard image="https://i.ibb.co/Xsf9F2c/Vice-President-Ghulam.jpg" name="Ghulam Mohiuddin" position="Vice President" />
-            <PersonCard image="https://i.ibb.co/7SPx6cv/Vice-President-Anush.jpg" name="Anush Hussain" position="Vice President" />
+            <PersonCard image="https://i.ibb.co/6sHRFWy/Whats-App-Image-2025-01-10-at-15-13-11-324996ce.jpg" name="Ghulam Mohiuddin" position="Vice President" />
+            <PersonCard image="https://i.ibb.co/xL1nQxz/Vice-President-Anush.jpg" name="Anush Hussain" position="Vice President" />
           </div>
           <div className='flex gap-8 lg:gap-16 md:gap-8 flex-wrap justify-center'>
-            <PersonCard image="https://i.ibb.co/pf1JGGS/Untitled.jpg" name="Wisha Zahid" position="General Secretary" />
-            <PersonCard image="https://i.ibb.co/Xp0kRHJ/treasurer.jpg" name="Shahzaib Mirza" position="Treasurer" />
-            <PersonCard image="https://i.ibb.co/41b4HHN/Event-Manager-Moeed.jpg" name="Moeed Uddin" position="Event Manager" />
+            <PersonCard image="https://i.ibb.co/ZB8WLNw/Untitled.jpg" name="Wisha Zahid" position="General Secretary" />
+            <PersonCard image="https://i.ibb.co/QX4jQN4/treasurer.jpg" name="Shahzaib Mirza" position="Treasurer" />
+            <PersonCard image="https://i.ibb.co/XjYLNNz/Event-Manager-Moeed.jpg" name="Moeed Uddin" position="Event Manager" />
           </div>
           <div className="flex gap-8 lg:gap-16 md:gap-8 flex-wrap justify-center">
-            <PersonCard image="https://i.ibb.co/kX769QN/Ausaja-Image.jpg" name="Ausaja Hussain" position="Event Manager" />
-            <PersonCard image="https://i.ibb.co/MPZ6f7d/Esports-Head-zohaib.jpg" name="Zohaib Siddiqui" position="E-Sports Director" />
-            <PersonCard image="https://i.ibb.co/Zx23dw5/DC-Head-Ansar.jpg" name="Anser Tayyab" position="Director Discipline Affairs" />
+            <PersonCard image="https://i.ibb.co/jfNb3GK/Ausaja-Image.jpg" name="Ausaja Hussain" position="Event Manager" />
+            <PersonCard image="https://i.ibb.co/gJTyZ88/Esports-Head-zohaib.jpg" name="Zohaib Siddiqui" position="E-Sports Director" />
+            <PersonCard image="https://i.ibb.co/nbTRqfH/DC-Head-Ansar.jpg" name="Anser Tayyab" position="Director Discipline Affairs" />
 
           </div>
           <div className="flex gap-8 lg:gap-16 md:gap-8 flex-wrap justify-center">
-            <PersonCard image="https://i.ibb.co/sKx48qr/dc-head-Almeeza.jpg" name="Almeeza Tariq" position="Director Discipline Affairs" />
-            <PersonCard image="https://i.ibb.co/Jvp9x7h/saim.jpg" name="Muhammad Saim" position="Design Director" />
+            <PersonCard image="https://i.ibb.co/QK0SGtd/dc-head-Almeeza.jpg" name="Almeeza Tariq" position="Director Discipline Affairs" />
+            <PersonCard image="https://i.ibb.co/S0DmNVt/saim.jpg" name="Muhammad Saim" position="Design Director" />
           </div>
         </div>
 
