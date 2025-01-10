@@ -17,7 +17,7 @@ const TeamPage = () => {
           </div>
           <div className="flex gap-8 lg:gap-16 md:gap-8 justify-center md:flex flex-wrap">
             <PersonCard image="https://i.ibb.co/6sHRFWy/Whats-App-Image-2025-01-10-at-15-13-11-324996ce.jpg" name="Ghulam Mohiuddin" position="Vice President" />
-            <PersonCard image="https://i.ibb.co/xL1nQxz/Vice-President-Anush.jpg" name="Anush Hussain" position="Vice President" />
+            <PersonCard image="https://i.ibb.co/KLC12BY/IMG-20240426-WA0272-2.jpg" name="Anush Hussain" position="Vice President" />
           </div>
           <div className='flex gap-8 lg:gap-16 md:gap-8 flex-wrap justify-center'>
             <PersonCard image="https://i.ibb.co/ZB8WLNw/Untitled.jpg" name="Wisha Zahid" position="General Secretary" />
