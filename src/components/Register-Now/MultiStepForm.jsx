@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TiTick } from "react-icons/ti";
 import { TextField, Button, MenuItem } from "@mui/material";
 import { Toaster, toast } from 'sonner';
+import axios from 'axios';
 
 const debounce = (func, wait) => {
   let timeout;
@@ -16,6 +17,7 @@ const EnhancedMultiStepForm = () => {
   const steps = ["Contact Info", "Player Info", "Review", "Submit"];
   const [currentStep, setCurrentStep] = useState(1);
   const [complete, setComplete] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const sportsConfig = {
     "Volleyball (6-10 players)": { min: 6, max: 10, fee: 6000 },
     "Throwball (7-11 players)": { min: 7, max: 11, fee: 5000 },
@@ -82,11 +84,6 @@ const EnhancedMultiStepForm = () => {
     return /^03\d{9}$/.test(phone);
   };
 
-  const validateAge = (age) => {
-    const numAge = parseInt(age);
-    return numAge >= 15 && numAge <= 60;
-  };
-
   const handleNumberOnlyInput = (e, maxLength = null) => {
     const value = e.target.value;
     if (!/^\d*$/.test(value)) {
@@ -99,8 +96,8 @@ const EnhancedMultiStepForm = () => {
   };
 
   const handleInputChange = useCallback((section, field, value, index) => {
-    if (["cnic", "phone", "age"].includes(field)) {
-      if (!handleNumberOnlyInput({ target: { value } }, field === "cnic" ? 13 : field === "phone" ? 11 : 2)) {
+    if (["cnic", "phone"].includes(field)) {
+      if (!handleNumberOnlyInput({ target: { value } }, field === "cnic" ? 13 : field === "phone" ? 11 : null)) {
         return;
       }
     }
@@ -153,12 +150,6 @@ const EnhancedMultiStepForm = () => {
           if (!validatePhone(value)) {
             error = "Invalid phone format";
             toast.error("Phone number must start with 03 and be 11 digits");
-          }
-          break;
-        case "age":
-          if (!validateAge(value)) {
-            error = "Invalid age";
-            toast.error("Age must be between 15 and 60");
           }
           break;
         default:
@@ -217,20 +208,64 @@ const EnhancedMultiStepForm = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (validateStep(currentStep)) {
-      console.log("Form Data:", formData);
-      toast.success("Form submitted successfully!");
-      setComplete(true);
-      setCurrentStep(steps.length);
+      setIsSubmitting(true);
+      try {
+        const submitData = new FormData();
+        
+        submitData.append('teamName', formData.leader.teamName);
+        
+        const cleanSportName = formData.leader.sports.replace(/\s*\([^)]*\)/, '').trim();
+        submitData.append('sportName', cleanSportName);
+        
+        const contactPerson = {
+          name: formData.leader.name,
+          email: formData.leader.email,
+          cnic: formData.leader.cnic,
+          phone: formData.leader.phone
+        };
+        submitData.append('contactPerson', JSON.stringify(contactPerson));
+        
+        const playersData = formData.players.map(player => ({
+          name: player.name,
+          cnic: player.cnic,
+          age: parseInt(player.age)
+        }));
+        submitData.append('players', JSON.stringify(playersData));
+        
+        if (formData.leader.paymentScreenshot) {
+          submitData.append('paymentScreenshot', formData.leader.paymentScreenshot);
+        }
+
+        const response = await axios.post(
+          'https://sportics-backend-01.vercel.app/api/register',
+          submitData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+        );
+
+        toast.success(response.data.message);
+        setComplete(true);
+        setCurrentStep(steps.length);
+        
+      } catch (error) {
+        toast.error(error.response?.data?.message || 'An error occurred during registration');
+        console.error('Registration error:', error);
+      } finally {
+        setIsSubmitting(false);
+      }
     } else {
-      toast.error("Please complete all required fields before submitting.");
+      toast.error("Please fill all required fields correctly.");
     }
   };
 
   const validateStep = (step) => {
     if (step === 1) {
-      const leaderFields = ["name", "email", "cnic", "phone", "teamName", "sports", "paymentScreenshot"];
+      const leaderFields = ["name", "email", "cnic", "phone", "teamName", "sports"];
       const hasErrors = Object.values(errors.leader).some(error => error !== "");
       const hasEmptyFields = leaderFields.some(field => !formData.leader[field]);
       return !hasErrors && !hasEmptyFields;
@@ -280,7 +315,7 @@ const EnhancedMultiStepForm = () => {
                       index + 1 < currentStep || (index + 1 === steps.length && complete)
                         ? "bg-green-500 border-2 border-green-500"
                         : index + 1 === currentStep
-                        ? "border-2 border-blue-600"
+                        ? "border-2 border-[#00A8FF]"
                         : "border-2 border-gray-200"
                     }
                   `}
@@ -291,7 +326,7 @@ const EnhancedMultiStepForm = () => {
                     <span
                       className={
                         index + 1 === currentStep
-                          ? "text-blue-600"
+                          ? "text-[#00A8FF]"
                           : "text-gray-400"
                       }
                     >
@@ -305,7 +340,7 @@ const EnhancedMultiStepForm = () => {
                     mt-2 text-xs sm:text-sm font-medium text-center
                     ${
                       index + 1 <= currentStep || (index + 1 === steps.length && complete)
-                        ? "text-blue-600"
+                        ? "text-[#00A8FF]"
                         : "text-gray-400"
                     }
                   `}
@@ -452,12 +487,14 @@ const EnhancedMultiStepForm = () => {
                       </TextField>
                       <div className="col-span-1 sm:col-span-2">
                         {formData.leader.sports && (
-                          <div className="mb-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                            <h3 className="text-lg font-semibold text-blue-900 mb-2">Registration Fee Details</h3>
-                            <p className="text-blue-800 font-medium mb-1">
+                          <div className="mb-4 p-4 bg-[#00A8FF]/10 rounded-lg border border-[#00A8FF]/20">
+                            <h3 className="text-lg font-semibold text-[#00A8FF] mb-2">
+                              Registration Fee Details
+                            </h3>
+                            <p className="text-[#00A8FF] font-medium mb-1">
                               Registration Fee: PKR {sportsConfig[formData.leader.sports].fee}
                             </p>
-                            <div className="mt-3 space-y-1 text-sm text-blue-700">
+                            <div className="mt-3 space-y-1 text-sm text-[#00A8FF]/90">
                               <p><span className="font-semibold">Bank Transfer:</span></p>
                               <p>Account Title: {PAYMENT_DETAILS.accountTitle}</p>
                               <p>Account Number: {PAYMENT_DETAILS.accountNumber}</p>
@@ -474,7 +511,7 @@ const EnhancedMultiStepForm = () => {
                           <div className="w-full">
                             <div
                               className={`relative h-48 rounded-lg border-2 ${
-                                errors.leader.paymentScreenshot ? 'border-red-500' : 'border-blue-500'
+                                errors.leader.paymentScreenshot ? 'border-red-500' : 'border-[#00A8FF]'
                               } bg-gray-50 flex justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out`}
                             >
                               <div className="absolute flex flex-col items-center">
@@ -573,14 +610,12 @@ const EnhancedMultiStepForm = () => {
                               value={player.age}
                               onChange={(e) => handleInputChange("players", "age", e.target.value, index)}
                               error={Boolean(errors.players[index]?.age)}
-                              helperText={errors.players[index]?.age || "Age between 15-60"}
+                              helperText={errors.players[index]?.age}
                               fullWidth
                               size="small"
                               inputProps={{
                                 maxLength: 2,
-                                pattern: "\\d*",
-                                min: 15,
-                                max: 60
+                                pattern: "\\d*"
                               }}
                             />
                           </div>
@@ -712,18 +747,19 @@ const EnhancedMultiStepForm = () => {
                     whileTap={{ scale: 0.95 }}
                     className="px-6 py-2 bg-gray-300 rounded-full text-gray-800 font-semibold transition-colors duration-300 hover:bg-gray-400"
                     onClick={() => setCurrentStep((prev) => prev - 1)}
+                    disabled={isSubmitting}
                   >
                     Previous
                   </motion.button>
                 )}
                 <motion.button
-                  whileHover={{ scale:  1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-6 py-2 rounded-full text-white font-semibold transition-colors duration-300 ${
+                  whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+                  className={`px-6 py-2 rounded-full text-white font-semibold transition-colors duration-300 flex items-center justify-center min-w-[100px] ${
                     currentStep === steps.length
                       ? "bg-green-600 hover:bg-green-700"
-                      : "bg-blue-600 hover:bg-blue-700"
-                  }`}
+                      : "bg-[#00A8FF] hover:bg-[#0096E3]"
+                  } ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
                   onClick={() => {
                     if (currentStep === steps.length) {
                       handleSubmit();
@@ -731,8 +767,23 @@ const EnhancedMultiStepForm = () => {
                       handleNextStep();
                     }
                   }}
+                  disabled={isSubmitting}
                 >
-                  {currentStep === steps.length ? "Submit" : "Next"}
+                  {currentStep === steps.length ? (
+                    isSubmitting ? (
+                      <div className="flex items-center space-x-2">
+                        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span>Submitting...</span>
+                      </div>
+                    ) : (
+                      "Submit"
+                    )
+                  ) : (
+                    "Next"
+                  )}
                 </motion.button>
               </div>
             )}
