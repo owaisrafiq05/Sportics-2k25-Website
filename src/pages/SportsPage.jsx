@@ -18,7 +18,7 @@ const sportsData = [
   { name: 'Table Tennis Doubles Boys', fee: 1500, category: 'Sports' },
   { name: 'Table Tennis Doubles Girls', fee: 1500, category: 'Sports' },
   { name: 'Table Tennis Mixed', fee: 2500, category: 'Sports' },
-  { name: 'Padel', fee: 2500, category: 'Sports' },
+  { name: 'Padel Singles', fee: 2500, category: 'Sports' },
   { name: 'Chess', fee: 700, category: 'Board Games' },
   { name: 'Scrabble', fee: 700, category: 'Board Games' },
   { name: 'Sequence', fee: 1200, category: 'Board Games' },

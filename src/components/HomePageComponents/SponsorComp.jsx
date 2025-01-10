@@ -16,7 +16,7 @@ const SponsorComp = () => {
       {/* Blockeyfi Logo with Heading */}
       <div className="blockeyfi-logo-container mb-8 mt-8 flex flex-col items-center">
         <h2 className="fira-code text-gray-300 text-2xl md:text-3xl mb-2">
-          <span className="uppercase font-bold text-gray-900">Platinum Sponsor</span>
+          <span className="uppercase font-bold text-gray-900">Gold Sponsor</span>
         </h2>
         <img 
           src="https://i.ibb.co/0MYbGtD/rb-55783.png" 
