@@ -23,11 +23,15 @@ const EnhancedMultiStepForm = () => {
     "Throwball (7-11 players)": { min: 7, max: 11, fee: 5000 },
     "Futsal Boys (8-10 players)": { min: 8, max: 10, fee: 6000 },
     "Futsal Girls (8-10 players)": { min: 8, max: 10, fee: 6000 },
-    "Table Tennis Singles (1 player)": { min: 1, max: 1, fee: 1200 },
-    "Table Tennis Doubles (2 players)": { min: 2, max: 2, fee: 1500 },
+    "Table Tennis Singles Girl (1 player)": { min: 1, max: 1, fee: 1200 },
+    "Table Tennis Doubles Girls (2 players)": { min: 2, max: 2, fee: 1500 },
+    "Table Tennis Singles Boy (1 player)": { min: 1, max: 1, fee: 1200 },
+    "Table Tennis Doubles Boys (2 players)": { min: 2, max: 2, fee: 1500 },
     "Table Tennis Mixed (2 players)": { min: 2, max: 2, fee: 2500 },
-    "Badminton Singles (1 player)": { min: 1, max: 1, fee: 1500 },
-    "Badminton Doubles (2 players)": { min: 2, max: 2, fee: 2500 },
+    "Badminton Singles Girl (1 player)": { min: 1, max: 1, fee: 1500 },
+    "Badminton Doubles Girls (2 players)": { min: 2, max: 2, fee: 2500 },
+    "Badminton Singles Boy (1 player)": { min: 1, max: 1, fee: 1500 },
+    "Badminton Doubles Boys (2 players)": { min: 2, max: 2, fee: 2500 },
     "Indoor Cricket (7-9 players)": { min: 7, max: 9, fee: 4000 },
     "Basketball Boys (8-12 players)": { min: 8, max: 12, fee: 7000 },
     "Basketball Girls (8-12 players)": { min: 8, max: 12, fee: 6000 },
@@ -39,7 +43,7 @@ const EnhancedMultiStepForm = () => {
     "Scrabble (1 player)": { min: 1, max: 1, fee: 700 },
     "Chess (1 player)": { min: 1, max: 1, fee: 700 },
     "Sequence (2 players)": { min: 2, max: 2, fee: 1200 },
-    "Padel (2 players)": { min: 2, max: 2, fee: 2500 },
+    "Padel (1 player)": { min: 1, max: 1, fee: 2500 },
   };
   const [formData, setFormData] = useState({
     leader: {
@@ -647,7 +651,7 @@ const EnhancedMultiStepForm = () => {
                     <div className="space-y-6">
                       <div className="bg-gray-50 p-4 sm:p-6 rounded-lg shadow-md">
                         <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-700">
-                          Leader Information
+                          Contact Person Information
                         </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           {Object.entries(formData.leader).map(([key, value]) => (
