@@ -27,7 +27,7 @@ const EnhancedMultiStepForm = () => {
     "Table Tennis Doubles Girls (2 players)": { min: 2, max: 2, fee: 1500 },
     "Table Tennis Singles Boy (1 player)": { min: 1, max: 1, fee: 1200 },
     "Table Tennis Doubles Boys (2 players)": { min: 2, max: 2, fee: 1500 },
-    "Table Tennis Mixed (2 players)": { min: 2, max: 2, fee: 2500 },
+    "Table Tennis Mixed (2 players)": { min: 2, max: 2, fee: 1500 },
     "Badminton Singles Girl (1 player)": { min: 1, max: 1, fee: 1500 },
     "Badminton Doubles Girls (2 players)": { min: 2, max: 2, fee: 2500 },
     "Badminton Singles Boy (1 player)": { min: 1, max: 1, fee: 1500 },
@@ -43,7 +43,7 @@ const EnhancedMultiStepForm = () => {
     "Scrabble (1 player)": { min: 1, max: 1, fee: 700 },
     "Chess (1 player)": { min: 1, max: 1, fee: 700 },
     "Sequence (2 players)": { min: 2, max: 2, fee: 1200 },
-    "Padel (1 player)": { min: 1, max: 1, fee: 2500 },
+    // "Padel (1 player)": { min: 1, max: 1, fee: 2500 },
   };
   const [formData, setFormData] = useState({
     leader: {

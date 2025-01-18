@@ -97,3 +97,23 @@
     }
   }
   
+  .original-fee {
+    text-decoration: line-through;
+    color: red;
+  }
+  
+  .discounted-fee {
+    font-weight: bold;
+    color: green; /* or any color you prefer */
+  }
+  
+  .discount-banner {
+    background-color: #ffeb3b; /* Yellow background */
+    color: #000; /* Black text */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px; /* Space below the banner */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
