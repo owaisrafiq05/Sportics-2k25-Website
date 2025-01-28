@@ -9,15 +9,15 @@ const sportsData = [
   { name: 'Throwball', fee: 5000, category: 'Sports' },
   { name: 'Volleyball', fee: 6000, category: 'Sports' },
   { name: 'Indoor Cricket', fee: 4000, category: 'Sports' },
-  { name: 'Badminton Singles Boys', fee: 1500, discountedFee: 1200, category: 'Sports' },
-  { name: 'Badminton Singles Girls', fee: 1500, discountedFee: 1200, category: 'Sports' },
-  { name: 'Badminton Doubles Boys', fee: 2500, discountedFee: 2000, category: 'Sports' },
-  { name: 'Badminton Doubles Girls', fee: 2500, discountedFee: 2000, category: 'Sports' },
-  { name: 'Table Tennis Singles Boys', fee: 1200, discountedFee: 1000, category: 'Sports' },
-  { name: 'Table Tennis Singles Girls', fee: 1200, discountedFee: 1000, category: 'Sports' },
-  { name: 'Table Tennis Doubles Boys', fee: 1500, discountedFee: 1200, category: 'Sports' },
-  { name: 'Table Tennis Doubles Girls', fee: 1500, discountedFee: 1200, category: 'Sports' },
-  { name: 'Table Tennis Mixed', fee: 2500, discountedFee: 1500, category: 'Sports' },
+  { name: 'Badminton Singles Boys', fee: 1200, category: 'Sports' },
+  { name: 'Badminton Singles Girls', fee: 1200, category: 'Sports' },
+  { name: 'Badminton Doubles Boys', fee: 2000, category: 'Sports' },
+  { name: 'Badminton Doubles Girls', fee: 2000, category: 'Sports' },
+  { name: 'Table Tennis Singles Boys', fee: 1000, category: 'Sports' },
+  { name: 'Table Tennis Singles Girls', fee: 1000, category: 'Sports' },
+  { name: 'Table Tennis Doubles Boys', fee: 1200, category: 'Sports' },
+  { name: 'Table Tennis Doubles Girls', fee: 1200, category: 'Sports' },
+  { name: 'Table Tennis Mixed', fee: 1500, category: 'Sports' },
   // { name: 'Padel Singles', fee: 2500, category: 'Sports' },
   { name: 'Chess', fee: 700, category: 'Board Games' },
   { name: 'Scrabble', fee: 700, category: 'Board Games' },
@@ -34,10 +34,6 @@ function SportsPage() {
 
   return (
     <div className="sports-page">
-      {/* Banner for discount information */}
-      <div className="discount-banner">
-        <p>Hurry! These price discounts will end on 26th January.</p>
-      </div>
 
       {categories.map(category => (
         <div key={category} className="category-section">
