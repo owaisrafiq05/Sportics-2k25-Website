@@ -72,7 +72,7 @@ const RegistrationCountdown = () => {
   const [timeRemaining, setTimeRemaining] = useState(0);
 
   // Target event date (31 January 2025, at 23:59 in Pakistan Standard Time)
-  const targetDate = new Date('2025-01-31T23:59:00+05:00'); // PST (UTC+5)
+  const targetDate = new Date('2025-02-01T23:59:00+05:00'); // PST (UTC+5)
 
   useEffect(() => {
     const countdownInterval = setInterval(() => {
